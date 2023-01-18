@@ -1,0 +1,275 @@
+@font-face {
+  font-family: "exo";
+  src: url("./extra_files/Exo2.0-Thin.otf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  line-height: 1.22;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+// < colors >
+$white: #FFFFFF;
+$dark_grey: #666666;
+$blue: #1698D9;
+$pink: #E62E7A;
+$yellow: #FFFF66;
+$light_grey: #B3B3B3;
+$super_light_grey: #F2F2F2;
+$black: #000000;
+// < /colors >
+
+//< commons >
+.minScreen {
+  display: none;
+}
+
+.cursorAuto {
+  cursor: auto;
+}
+
+.hidden {
+  display: none;
+}
+//< /commons >
+
+.app {
+  background-image: url("./extra_files/PatternbgImg.png");
+  background-size: 100%;
+  align-items: center;
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+}
+
+.shop {
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+  padding-top: 36px;
+  padding-bottom: 67px;
+
+  &__title {
+    font-family: "exo";
+  text-shadow: 0px 1px 1px $black;
+  color: $white;
+  font-size: 36px;
+  margin-bottom: 24px;
+  text-align: center;
+  }
+
+  &__cardBox {
+    display: flex;
+  justify-content: center;
+  position: relative;
+  }
+}
+
+.card {
+  &__wrapper {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    width: 320px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, transparent 31px, $blue 0);
+    position: relative;
+    height: 509px;
+    z-index: 0;
+  }
+
+  &__item {
+    cursor: pointer;
+    width: 310px;
+    height: 499px;
+    display: block;
+    background: url("./extra_files/Photocat.png") bottom left no-repeat,
+      linear-gradient(135deg, transparent 29px, $super_light_grey 0);
+    text-align: left;
+    font-weight: 400;
+    border-radius: 10px;
+    padding-top: 21px;
+    padding-left: 51px;
+  }
+  &__pretitle {
+    color: $dark_grey;
+    font-size: 16px;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  
+  &__title {
+    font-size: 48px;
+    line-height: 1;
+    margin-bottom: 7px;
+    font-weight: 400;
+  }
+  
+  &__taste {
+    font-size: 24px;
+    line-height: 1;
+    margin-bottom: 19px;
+  }
+  
+  &__portion,
+  &__bonus {
+    font-size: 14px;
+    line-height: 1.14;
+    color: $dark_grey;
+    padding-left: 18px;
+  }
+  
+  &__circle {
+    padding-top: 14px;
+    width: 85px;
+    height: 85px;
+    font-family: "Trebuchet MS", sans-serif;
+    font-size: 42px;
+    text-align: center;
+    color: $white;
+    background-color: $blue;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 3%;
+    right: 3%;
+    z-index: 3;
+  }
+  
+  &__weight {
+    font-size: 40px;
+    line-height: 1;
+  }
+  
+  &__kg {
+    font-size: 21px;
+    line-height: 0.9;
+  }
+  
+  &__underText {
+    font-size: 13px;
+    line-height: 1;
+    color: $white;
+    margin-top: 14px;
+    &-buy {
+      color: $blue;
+  border-bottom: 1px dashed;
+  cursor: pointer;
+    }
+  }
+}
+
+
+/* selected */
+
+.card {
+  &__underText-selected {
+    font-size: 13px;
+    line-height: 1;
+    margin-top: 14px;
+    color: $white;
+  }
+  
+  &__circle-selected {
+    background-color: $pink;
+  }
+  
+  &__wrapper-selected {
+    background: linear-gradient(135deg, transparent 31px, $pink 0);
+  }
+
+}
+
+.pretitleSelected {
+    color: $pink;
+}
+
+
+/* not in stock  */
+
+.card {
+  &__underText-notInStock {
+    font-size: 13px;
+    line-height: 1;
+    color: $yellow;
+    margin-top: 14px;
+  }
+  &-notInStock::after {
+    content: "";
+    position: absolute;
+    background: linear-gradient(135deg, transparent 31px, $super_light_grey 0);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+  }
+  &__wrapper-notInStock {
+    background: linear-gradient(135deg, transparent 31px, $light_grey 0);
+  }
+  &__circle-notInStock {
+    background-color: $light_grey;
+  }
+}
+
+.colorNotInStock {
+  color: $light_grey;
+}
+
+@media (min-width: 1150px) {
+
+  .shop {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+  .card:not(:last-child) {
+    margin-right: 80px;
+  }
+}
+
+@media (max-width: 1149px) {
+  .shop {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
+    
+    &__cardBox {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+
+  .card {
+    width: 47%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &:last-of-type {
+      margin-top: 30px;
+    }
+  }
+}
+
+@media (max-width: 702px) {
+  .shop__cardBox {
+    flex-direction: column;
+    align-items: center
+  }
+}
+
+@media (max-width: 328px) {
+  .shop {
+    display: none;
+  }
+
+  .minScreen {
+    display: inline;
+    color: $white;
+    text-align: center;
+  }
+}
