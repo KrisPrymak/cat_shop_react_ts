@@ -13,8 +13,7 @@ const Shop = () => {
         setFeed([...feed.map(f => f.id === id ? {...f, isSelected: !f.isSelected} : f)])
     }
     return (
-        <div>
-            <div className='shop'>
+        <section className='shop'>
             <h3 className='shop__title'>Ты сегодня покормил кота?</h3>
             <div className='shop__cardBox'>
             {feed.map(f => {
@@ -23,8 +22,7 @@ const Shop = () => {
                 )
             })}
             </div>
-        </div>
-        </div>
+        </section>
     );
 };
 
